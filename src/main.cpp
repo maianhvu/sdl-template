@@ -1,8 +1,8 @@
 #include <iostream>
 #include <SDL.h>
-//#include <SDL_image.h>
+#include <SDL_image.h>
 #include "sdl_utils.h"
-//#include "sdl_image_utils.h"
+#include "sdl_image_utils.h"
 #include "res_path.h"
 #include "cleanup.h"
 
@@ -11,8 +11,8 @@ const int SCREEN_HEIGHT = 480;
 
 int main(int argc, char** argv) {
     // Initialize
-    if (!init(SDL_INIT_EVERYTHING)) { // || !initIMG(IMG_INIT_PNG)) {
-        // IMG_Quit();
+    if (!init(SDL_INIT_EVERYTHING)) || !initIMG(IMG_INIT_PNG)) {
+        IMG_Quit();
         SDL_Quit();
         return 1;
     }
@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
             SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (window == nullptr) {
         logSDLError(std::cout, "CreateWindow");
-        // IMG_Quit();
+        IMG_Quit();
         SDL_Quit();
         return 1;
     }
@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
     if (renderer == nullptr) {
         logSDLError(std::cout, "CreateRenderer");
         cleanup(window);
-        // IMG_Quit();
+        IMG_Quit();
         SDL_Quit();
         return 1;
     }
@@ -55,7 +55,7 @@ int main(int argc, char** argv) {
         SDL_RenderClear(renderer);
         SDL_RenderPresent(renderer);
     }
-    // IMG_Quit();
+    IMG_Quit();
     SDL_Quit();
     return 0;
 }

@@ -19,15 +19,15 @@ endif()
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 # Uncomment the following lines for IMG support
-# find_package(SDL2_image REQUIRED)
-# include_directories(${SDL2_IMAGE_INCLUDE_DIR})
+find_package(SDL2_image REQUIRED)
+include_directories(${SDL2_IMAGE_INCLUDE_DIR})
 
 # include header files
 include_directories(include)
 
 add_executable(SDL2Template src/main.cpp)
 # normal target
-target_link_libraries(SDL2Template ${SDL2_LIBRARY})
+# target_link_libraries(SDL2Template ${SDL2_LIBRARY})
 # with IMG support
-# target_link_libraries(SDL2Template ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY})
+target_link_libraries(SDL2Template ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY})
 install(TARGETS SDL2Template RUNTIME DESTINATION ${BIN_DIR})
