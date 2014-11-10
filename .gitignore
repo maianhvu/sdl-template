@@ -15,7 +15,8 @@ Session.vim
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -53,6 +54,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Windows libraries
+*.dll
 
 ###Linux###
 
